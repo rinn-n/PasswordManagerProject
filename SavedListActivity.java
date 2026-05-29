@@ -128,10 +128,8 @@ public class SavedListActivity extends AppCompatActivity {
         return new String(Base64.decode(encoded, Base64.DEFAULT));
     }
 
-    // =============================================
-    // 항목 클릭 → 비밀번호 확인 AlertDialog (코드3번 패턴)
-    // =============================================
-    void showPasswordDialog(int position) {
+
+    void showPasswordDialog(int position) {   // 항목 클릭 → 비밀번호 확인 AlertDialog 
         int id = listIds.get(position);
         SQLiteDatabase sqlDB = dbHelper.getReadableDatabase();
         Cursor cursor = sqlDB.rawQuery(
