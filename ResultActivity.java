@@ -52,14 +52,13 @@ public class ResultActivity extends AppCompatActivity {
         tvResult.setTextColor(getScoreColor(score));
 
 
-        // 별점 설정 (코드10번 RatingBar 활용)
+        // 별점 설정 
         ratingBar.setRating(getRatingFromScore(score));
 
         // 강화 제안 비밀번호 생성
         suggestedPw = suggestPassword(password);
 
-        if (suggestedPw.equals(password)) {
-            // 이미 강한 경우
+        if (suggestedPw.equals(password)) {             // 이미 강한 경우
             tvSuggested.setText("✅ 이미 매우 안전합니다!");
             tvSuggestMsg.setText("그대로 사용하셔도 됩니다.");
         } else {
@@ -101,12 +100,8 @@ public class ResultActivity extends AppCompatActivity {
     }
 
 
-    // 강화 제안 비밀번호 생성
-    // - 대문자 없으면 → 첫 글자 대문자
-    // - 숫자 없으면   → 끝에 랜덤 숫자 2개
-    // - 특수문자 없으면 → 중간에 특수문자 삽입
 
-    String suggestPassword(String pw) {
+    String suggestPassword(String pw) {   // 강화 제안 비밀번호 생성
         String suggested = pw;
 
         //  대문자 없으면 첫 글자 대문자로
