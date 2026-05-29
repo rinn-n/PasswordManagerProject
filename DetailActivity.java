@@ -33,14 +33,12 @@ public class DetailActivity extends AppCompatActivity {
         btnReturn      = (Button)   findViewById(R.id.btnReturn);
         dbHelper       = new DBHelper(this);
 
-        // HistoryActivity에서 전달받은 id (코드11번 패턴)
-        logId = getIntent().getIntExtra("logId", -1);
 
-        // DB에서 해당 기록 불러오기
-        loadDetail();
+        logId = getIntent().getIntExtra("logId", -1);  // HistoryActivity에서 전달받은 id 
 
-        // 삭제 버튼 - AlertDialog 확인 후 삭제 (코드3번 패턴)
-        btnDelete.setOnClickListener(new View.OnClickListener() {
+        loadDetail();       // DB에서 해당 기록 불러오기
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {  // 삭제 버튼 - AlertDialog 확인 후 삭제
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder dlg = new AlertDialog.Builder(DetailActivity.this);
@@ -57,7 +55,7 @@ public class DetailActivity extends AppCompatActivity {
 
                         Toast.makeText(DetailActivity.this,
                                 "삭제되었습니다", Toast.LENGTH_SHORT).show();
-                        finish(); // 삭제 후 돌아가기 (코드9번 패턴)
+                        finish(); // 삭제 후 돌아가기 
                     }
                 });
 
@@ -74,11 +72,9 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
-
-    // =============================================
-    // DB에서 해당 id의 기록 불러오기 (코드12번 Cursor 패턴)
-    // =============================================
-    void loadDetail() {
+  
+ 
+    void loadDetail() {    // DB에서 해당 id의 기록 불러오기 
         SQLiteDatabase sqlDB = dbHelper.getReadableDatabase();
         Cursor cursor = sqlDB.rawQuery(
                 "SELECT * FROM scan_logs WHERE id=" + logId, null);
