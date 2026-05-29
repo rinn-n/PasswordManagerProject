@@ -47,7 +47,7 @@ public class HistoryActivity extends AppCompatActivity {
         // DB에서 기록 불러오기
         loadHistory();
 
-        // 항목 클릭 → DetailActivity로 이동 (코드9,11번 패턴)
+        // 항목 클릭 → DetailActivity로 이동 
         listHistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -57,7 +57,7 @@ public class HistoryActivity extends AppCompatActivity {
             }
         });
 
-        // 전체 삭제 버튼 - AlertDialog 확인 후 삭제 (코드3번 패턴)
+        // 전체 삭제 버튼 - AlertDialog 확인 후 삭제
         btnDeleteAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,10 +91,8 @@ public class HistoryActivity extends AppCompatActivity {
         loadHistory();
     }
 
-    // =============================================
-    // DB에서 검사 기록 불러오기 (코드12번 Cursor 패턴)
-    // =============================================
-    void loadHistory() {
+
+    void loadHistory() {      // DB에서 검사 기록 불러오기
         listData.clear();
         listIds.clear();
 
