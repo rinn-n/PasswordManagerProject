@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!-- 목록 표시 (코드11번 ListView 패턴) -->
+    <!-- 목록 표시    -->
     <ListView
         android:id="@+id/listHistory"
         android:layout_width="match_parent"
