@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                // 강도 분석 계산
-                int score = analyzePassword(pw);
+                int score = analyzePassword(pw);     // 강도 분석 계산
                 String result = getResultText(score);
 
                 // ResultActivity로 이동 + 데이터 전달
@@ -78,22 +77,22 @@ public class MainActivity extends AppCompatActivity {
         else if (pw.length() >= 8) score += 15;
         else score += 5;
 
-        //대문자 포함
+        //대문자 포함?
         if (pw.matches(".*[A-Z].*")) score += 15;
 
-        //소문자 포함
+        //소문자 포함?
         if (pw.matches(".*[a-z].*")) score += 15;
 
-        //숫자 포함
+        //숫자 포함?
         if (pw.matches(".*[0-9].*")) score += 20;
 
-        // 특수문자 포함
+        // 특수문자 포함?
         if (pw.matches(".*[!@#$%^&*()].*")) score += 20;
 
-        // 반복문자 패턴 감점 (예: aaaa, 1111)
+        // 반복문자 패턴 감점
         if (pw.matches(".*(.)\\1{2,}.*")) score -= 10;
 
-        // 0~100 범위 고정
+        // 0~100 범위 정해두기
         if (score < 0) score = 0;
         if (score > 100) score = 100;
 
